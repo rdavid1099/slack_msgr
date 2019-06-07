@@ -1,0 +1,141 @@
+AllCops:
+  # Include common Ruby source files.
+  Include:
+    - '**/*.rb'
+    - '**/*.arb'
+    - '**/*.axlsx'
+    - '**/*.builder'
+    - '**/*.fcgi'
+    - '**/*.gemfile'
+    - '**/*.god'
+    - '**/*.jb'
+    - '**/*.jbuilder'
+    - '**/*.mspec'
+    - '**/*.opal'
+    - '**/*.pluginspec'
+    - '**/*.podspec'
+    - '**/*.rabl'
+    - '**/*.rake'
+    - '**/*.rbuild'
+    - '**/*.rbw'
+    - '**/*.rbx'
+    - '**/*.ru'
+    - '**/*.ruby'
+    - '**/*.spec'
+    - '**/*.thor'
+    - '**/*.watchr'
+    - '**/.irbrc'
+    - '**/.pryrc'
+    - '**/buildfile'
+    - '**/Appraisals'
+    - '**/Berksfile'
+    - '**/Brewfile'
+    - '**/Buildfile'
+    - '**/Capfile'
+    - '**/Cheffile'
+    - '**/Dangerfile'
+    - '**/Deliverfile'
+    - '**/Fastfile'
+    - '**/*Fastfile'
+    - '**/Guardfile'
+    - '**/Jarfile'
+    - '**/Mavenfile'
+    - '**/Podfile'
+    - '**/Puppetfile'
+    - '**/Rakefile'
+    - '**/Snapfile'
+    - '**/Thorfile'
+    - '**/Vagabondfile'
+    - '**/Vagrantfile'
+  Exclude:
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+    - '.git/**/*'
+    - 'Gemfile'
+    - 'slack-msgr.gemspec'
+    - 'spec/**/*'
+    - Rakefile
+    - bin/**
+
+Metrics/LineLength:
+  Description: 'Limit lines to 100 characters.'
+  StyleGuide: '#100-character-limits'
+  Enabled: true
+  Max: 100
+  # To make it possible to copy or click on URIs in the code, we allow lines
+  # containing a URI to be longer than Max.
+  AllowHeredoc: true
+  AllowURI: true
+  URISchemes:
+    - http
+    - https
+  # The IgnoreCopDirectives option causes the LineLength rule to ignore cop
+  # directives like '# rubocop: enable ...' when calculating a line's length.
+  IgnoreCopDirectives: false
+  # The IgnoredPatterns option is a list of !ruby/regexp and/or string
+  # elements. Strings will be converted to Regexp objects. A line that matches
+  # any regular expression listed in this option will be ignored by LineLength.
+  IgnoredPatterns: []
+
+Naming/FileName:
+  Description: 'Use snake_case for source file names.'
+  StyleGuide: '#snake-case-files'
+  Enabled: true
+  # Camel case file names listed in `AllCops:Include` and all file names listed
+  # in `AllCops:Exclude` are excluded by default. Add extra excludes here.
+  Exclude: [slack-msgr.gemspec]
+  # When `true`, requires that each source file should define a class or module
+  # with a name which matches the file name (converted to ... case).
+  # It further expects it to be nested inside modules which match the names
+  # of subdirectories in its path.
+  ExpectMatchingDefinition: false
+  # If non-`nil`, expect all source file names to match the following regex.
+  # Only the file name itself is matched, not the entire file path.
+  # Use anchors as necessary if you want to match the entire name rather than
+  # just a part of it.
+  Regex: ~
+  # With `IgnoreExecutableScripts` set to `true`, this cop does not
+  # report offending filenames for executable scripts (i.e. source
+  # files with a shebang in the first line).
+  IgnoreExecutableScripts: true
+  AllowedAcronyms:
+    - CLI
+    - DSL
+    - ACL
+    - API
+    - ASCII
+    - CPU
+    - CSS
+    - DNS
+    - EOF
+    - GUID
+    - HTML
+    - HTTP
+    - HTTPS
+    - ID
+    - IP
+    - JSON
+    - LHS
+    - QPS
+    - RAM
+    - RHS
+    - RPC
+    - SLA
+    - SMTP
+    - SQL
+    - SSH
+    - TCP
+    - TLS
+    - TTL
+    - UDP
+    - UI
+    - UID
+    - UUID
+    - URI
+    - URL
+    - UTF8
+    - VM
+    - XML
+    - XMPP
+    - XSRF
+    - XSS
