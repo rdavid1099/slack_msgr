@@ -1,4 +1,8 @@
 require 'bundler/setup'
+require 'pry'
+require 'simplecov'
+SimpleCov.start
+
 require './lib/config/initializer'
 
 RSpec.configure do |config|
