@@ -8,5 +8,9 @@ module SlackMsgr
     def configuration
       @configuration ||= Configuration.new
     end
+
+    def configure
+      yield(configuration)
+    end
   end
 end
