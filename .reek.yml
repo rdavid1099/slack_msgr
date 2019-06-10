@@ -2,7 +2,8 @@
 detectors:
   Attribute:
     enabled: true
-    exclude: []
+    exclude:
+    - 'Configuration'
   BooleanParameter:
     enabled: true
     exclude: []
@@ -46,8 +47,9 @@ detectors:
     enabled: true
     exclude: []
   MissingSafeMethod:
-    enabled: true
-    exclude: []
+    enabled: false
+    exclude:
+    - 'Configuration#clear!'
   ModuleInitialize:
     enabled: true
     exclude: []

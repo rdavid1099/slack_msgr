@@ -3,7 +3,7 @@ require 'pry'
 require 'simplecov'
 SimpleCov.start
 
-require './lib/config/initializer'
+require './lib/slack_msgr'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
