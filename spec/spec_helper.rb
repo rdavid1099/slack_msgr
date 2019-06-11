@@ -1,6 +1,8 @@
 require 'bundler/setup'
 require 'pry'
 require 'simplecov'
+Dir[File.expand_path 'spec/helpers/**/*.rb'].each { |f| require f }
+
 SimpleCov.start
 
 require './lib/slack_msgr'
