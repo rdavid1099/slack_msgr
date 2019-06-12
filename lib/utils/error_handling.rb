@@ -4,7 +4,7 @@ module SlackMsgr
   # Handles all chat functionality and methods corresponding with Slack API
   module ErrorHandling
     class << self
-      def raise(error_type, opts)
+      def raise(error_type, opts = {})
         err = send(error_type, opts)
 
         Kernel.raise err[:exception], err[:message]
@@ -17,6 +17,18 @@ module SlackMsgr
             "If you would like this method added, please add an issue at #{GITHUB_REPO}"
         }
       end
+
+      def configuration_error(_opts)
+        {
+          exception: ConfigurationError,
+          message: "Error with configruation: oauth_access_token not found\n" \
+            'Be sure to configure all tokens and secrets'
+        }
+      end
     end
   end
+end
+
+# Define custom error class for more descriptive exceptions
+class ConfigurationError < StandardError
 end

@@ -5,7 +5,9 @@ module SlackMsgr
   class Configuration
     attr_accessor :verification_token,
                   :client_secret,
-                  :signing_secret
+                  :signing_secret,
+                  :oauth_access_token,
+                  :bot_user_oauth_access_token
 
     def initialize(
       verification_token: nil,

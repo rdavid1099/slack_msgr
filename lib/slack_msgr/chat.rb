@@ -20,20 +20,14 @@ module SlackMsgr
     end
 
     attr_reader :method,
-                :opts
+                :body
 
     def initialize(method, opts)
       chat_method = CHAT_METHODS[method]
       ErrorHandling.raise(:unknown_method, method: method) unless chat_method
 
       @method = "chat.#{chat_method}"
-      @body   = initialize_body(opts)
-    end
-
-    private
-
-    def initialize_body
-      opts.to_json
+      @body   = opts.to_json
     end
   end
 end

@@ -7,16 +7,15 @@ module SlackMsgr
       private
 
       def conn
-        @conn ||= initialize_connection
-      end
+        oauth_access_token = SlackMsgr.configuration.oauth_access_token
+        ErrorHandling.raise(:configuration_error) unless oauth_access_token
 
-      def initialize_connection
-        conn = Faraday.new(url: SLACK_URL) do |faraday|
-          faraday.request  :url_encoded             # form-encode POST params
-          faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
+        faraday = Faraday.new(url: SLACK_URL) do |config|
+          config.request  :url_encoded             # form-encode POST params
+          config.adapter  Faraday.default_adapter  # make requests with Net::HTTP
         end
-        conn.authorization :Bearer, SlackMsgr.configuration.oauth_access_token
-        conn
+        faraday.authorization :Bearer, oauth_access_token
+        faraday
       end
     end
   end
