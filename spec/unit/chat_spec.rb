@@ -8,5 +8,11 @@ RSpec.describe SlackMsgr::Chat do
 
       chat.call(method, opts)
     end
+
+    it 'raises error if invalid method is passed' do
+      error_msg = "Method not found: invalid_method does not exist\n" \
+        "If you would like this method added, please add an issue at https://github.com/rdavid1099/slack-msgr"
+      expect{ chat.call(:invalid_method, {}) }.to raise_error(NoMethodError, )
+    end
   end
 end

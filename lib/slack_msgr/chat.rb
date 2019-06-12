@@ -4,7 +4,9 @@ module SlackMsgr
   # Handles all chat functionality and methods corresponding with Slack API
   class Chat
     class << self
-      def call(method, opts)
+      def call(method, opts = {})
+        ErrorHandling.raise(:unknown_method, method: method) unless CHAT_METHODS.include?(method)
+
         initialize = new(method, opts)
       end
     end
