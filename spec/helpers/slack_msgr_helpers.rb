@@ -9,4 +9,15 @@ module SlackMsgrHelpers
       config.signing_secret     = opts[:signing_secret] || 'baz'
     end
   end
+
+  def mock_faraday_connection
+    allow_any_instance_of(Faraday::Connection).to receive(:post).and_return(
+      double("response", status: 200, body: {"ok": true})
+    )
+  end
+
+  def mock_config_oauth_access_token
+    allow_any_instance_of(SlackMsgr::Configuration).to receive(:oauth_access_token)
+    .and_return('xoxo-xxxx-xxxxxxxxx-xxxx')
+  end
 end

@@ -2,12 +2,20 @@
 
 module SlackMsgr
   # Handles all chat functionality and methods corresponding with Slack API
-  class Chat
+  class Chat < Fetcher
+    CHAT_METHODS = {
+      post_message: 'postMessage'
+    }.freeze
+
     class << self
       def call(method, opts = {})
-        ErrorHandling.raise(:unknown_method, method: method) unless CHAT_METHODS.include?(method)
+        chat = new(method, opts)
 
-        initialize = new(method, opts)
+        conn.post do |req|
+          req.url "/api/#{chat.method}"
+          req.headers['Content-type'] = 'application/json'
+          req.body = chat.body
+        end
       end
     end
 
@@ -15,8 +23,17 @@ module SlackMsgr
                 :opts
 
     def initialize(method, opts)
-      @method = method
-      @opts   = opts
+      chat_method = CHAT_METHODS[method]
+      ErrorHandling.raise(:unknown_method, method: method) unless chat_method
+
+      @method = "chat.#{chat_method}"
+      @body   = initialize_body(opts)
+    end
+
+    private
+
+    def initialize_body
+      opts.to_json
     end
   end
 end
