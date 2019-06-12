@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
-GITHUB_REPO = 'https://github.com/rdavid1099/slack-msgr'
+module SlackMsgr
+  CHAT_METHODS = [
+    :post_message
+  ].freeze
 
-CHAT_METHODS = [
-  :post_message
-].freeze
+  GITHUB_REPO = 'https://github.com/rdavid1099/slack-msgr'
+
+  VERSION = '0.1.0'
+end
