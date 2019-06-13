@@ -25,6 +25,14 @@ module SlackMsgr
             'Be sure to configure all tokens and secrets'
         }
       end
+
+      def req_args_missing(opts)
+        {
+          exception: ArgumentError,
+          message: "Required arguments missing: Method #{opts[:method]} requires arguments:\n" \
+            "[ #{opts[:req_args].join(', ')} ] Refer to https://api.slack.com/methods/"
+        }
+      end
     end
   end
 end

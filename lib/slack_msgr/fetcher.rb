@@ -2,7 +2,7 @@
 
 module SlackMsgr
   # Handles all requests with Slack API
-  class Fetcher
+  class SlackMethod
     class << self
       private
 
