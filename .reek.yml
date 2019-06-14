@@ -3,7 +3,7 @@ detectors:
   Attribute:
     enabled: true
     exclude:
-    - 'Configuration'
+    - Configuration
   BooleanParameter:
     enabled: true
     exclude: []
@@ -85,6 +85,7 @@ detectors:
     enabled: true
     exclude:
     - initialize
+    - SlackMsgrHelpers
     max_statements: 5
   UncommunicativeMethodName:
     enabled: true
