@@ -4,7 +4,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/b0b292347eea43d4c414/maintainability)](https://codeclimate.com/github/rdavid1099/slack-msgr/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/b0b292347eea43d4c414/test_coverage)](https://codeclimate.com/github/rdavid1099/slack-msgr/test_coverage)
 
-Under construction 🚧 Release is still in very early development. Basic functionality is available though.
+Under construction 🚧 Release is still in very early development. Limited, basic functionality is available.
 
 ## Requirements
 * Ruby >= 2.3
@@ -24,7 +24,7 @@ If you use Rubygems, run this command manually from your shell to install the la
     gem install slack_msgr
 
 ## Configuration
-This gem must be configured with credentials provided by Slack. _NOTE: These tokens are secret and given uniquely to you to access your workspace. It has strongly advised to store these in an environment variable and not directly in your configuration file._
+This gem must be configured with credentials provided by Slack. _NOTE: These tokens are secret and given uniquely to you to access your workspace. It is strongly advised to store these in an environment variable and not directly in your configuration file._
 
 ### Using Rails
 If you are using this gem with a Rails project, create an initializer file.
