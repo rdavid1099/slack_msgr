@@ -33,4 +33,13 @@ RSpec.describe SlackMsgr::Chat do
       expect{ chat.call(:post_message, {}) }.to raise_error(ArgumentError, error_msg)
     end
   end
+
+  describe '#new' do
+    it 'only sanitizes body to only one permitted argument' do
+      method = :post_message
+      unsanitized_opts = {channel: 'repeat', text: 'Hello world', not_real: 'wrong', channel: 'announcements', as_user: false}
+      result = chat.new(method, unsanitized_opts)
+      expect(result.body).to eq({channel: 'announcements', text: 'Hello world', as_user: false}.to_json)
+    end
+  end
 end

@@ -55,6 +55,10 @@ module SlackMsgr
 
     def sanitize_body
       ErrorHandling.raise(:req_args_missing, req_args: REQUIRED_ARGUMENTS, method: method) if req_args_missing? # rubocop:disable LineLength
+      opts.keys.each_with_object({}) do |key, body|
+        body[key] ||= opts[key] if PERMITTED_ARGUMENTS.include?(key)
+        body
+      end.to_json
     end
 
     def req_args_missing?
