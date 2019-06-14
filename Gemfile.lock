@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    slack-msgr (0.1.0)
+    slack-msgr (0.0.1)
       faraday (~> 0.15.4)
 
 GEM
@@ -93,4 +93,4 @@ DEPENDENCIES
   slack-msgr!
 
 BUNDLED WITH
-   2.0.1
+   2.0.2
