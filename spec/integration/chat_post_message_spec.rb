@@ -12,7 +12,7 @@ RSpec.describe 'SlackMsgr#chat :post_message' do
 
     expect_any_instance_of(Faraday::Connection).to receive(:post)
 
-    slack_msgr.chat(:post_message, {channel: 'announcements', text: 'Hello world'})
+    slack_msgr.chat(:post_message, channel: 'announcements', text: 'Hello world')
   end
 
   it 'throws error if oauth_access_token is not configured' do
@@ -22,7 +22,7 @@ RSpec.describe 'SlackMsgr#chat :post_message' do
       "Be sure to configure all tokens and secrets"
 
     expect do
-      slack_msgr.chat(:post_message, {channel: 'announcements', text: 'Hello world'})
+      slack_msgr.chat(:post_message, channel: 'announcements', text: 'Hello world')
     end.to raise_error(ConfigurationError, error_msg)
   end
 end
