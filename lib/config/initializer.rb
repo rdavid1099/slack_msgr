@@ -4,4 +4,9 @@ require 'json'
 require 'faraday'
 require_relative './constants'
 
-Dir[File.expand_path 'lib/{slack_msgr,utils}/**/*.rb'].each { |f| require f }
+path = __dir__
+
+require "#{path}/../slack_msgr/fetcher"
+require "#{path}/../slack_msgr/chat"
+require "#{path}/../slack_msgr/configuration"
+require "#{path}/../utils/error_handling"
