@@ -7,7 +7,7 @@ module SlackMsgr
       private
 
       def conn
-        oauth_access_token = SlackMsgr.configuration.oauth_access_token
+        oauth_access_token = SlackMsgr.configuration.default_token
         ErrorHandling.raise(:configuration_error) unless oauth_access_token
 
         faraday = Faraday.new(url: SLACK_URL) do |config|

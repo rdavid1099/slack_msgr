@@ -8,6 +8,10 @@ SimpleCov.start
 require './lib/slack_msgr'
 
 RSpec.configure do |config|
+  config.before(:each) do
+    SlackMsgr.configuration.clear!
+  end
+
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = '.rspec_status'
 

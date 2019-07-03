@@ -6,25 +6,40 @@ module SlackMsgr
     attr_accessor :verification_token,
                   :client_secret,
                   :signing_secret,
-                  :access_tokens
+                  :access_tokens,
+                  :set_default_token
 
     def initialize(
       verification_token: nil,
       client_secret: nil,
       signing_secret: nil,
-      access_tokens: nil
+      access_tokens: {},
+      set_default_token: nil
     )
       @verification_token = verification_token
       @client_secret      = client_secret
       @signing_secret     = signing_secret
       @access_tokens      = access_tokens
+      @set_default_token  = set_default_token
     end
 
     def clear!
       @verification_token = nil
       @client_secret      = nil
       @signing_secret     = nil
-      @access_tokens      = nil
+      @access_tokens      = {}
+      @set_default_token  = nil
+      @default_token      = nil
+    end
+
+    def default_token
+      @default_token ||= initialize_default_token
+    end
+
+    def initialize_default_token
+      return unless access_tokens && access_tokens.first
+
+      access_tokens[set_default_token] || access_tokens.first[1]
     end
   end
 end

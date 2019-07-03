@@ -18,7 +18,7 @@ module SlackMsgrHelpers
   end
 
   def mock_config_oauth_access_token
-    allow_any_instance_of(SlackMsgr::Configuration).to receive(:oauth_access_token)
+    allow_any_instance_of(SlackMsgr::Configuration).to receive(:default_token)
     .and_return('xoxo-xxxx-xxxxxxxxx-xxxx')
   end
 end
