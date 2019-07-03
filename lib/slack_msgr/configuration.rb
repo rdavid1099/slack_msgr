@@ -37,7 +37,7 @@ module SlackMsgr
     end
 
     def initialize_default_token
-      return unless access_tokens && access_tokens.first
+      return unless access_tokens&.first
 
       access_tokens[set_default_token] || access_tokens.first[1]
     end
