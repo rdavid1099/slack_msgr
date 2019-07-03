@@ -4,11 +4,10 @@ module SlackMsgrHelpers
 
   def configure_slack_msgr(msgr, opts = {})
     msgr.configure do |config|
-      config.verification_token          = opts[:verification_token] || 'foo'
-      config.client_secret               = opts[:client_secret] || 'bar'
-      config.signing_secret              = opts[:signing_secret] || 'baz'
-      config.oauth_access_token          = opts[:oauth_access_token] || 'foobar'
-      config.bot_user_oauth_access_token = opts[:bot_user_oauth_access_token] || 'foobaz'
+      config.verification_token = opts[:verification_token] || 'foo'
+      config.client_secret      = opts[:client_secret] || 'bar'
+      config.signing_secret     = opts[:signing_secret] || 'baz'
+      config.access_tokens      = opts[:access_tokens] || {bot: 'xoxb-1234567', me: 'xoxp-1234567'}
     end
   end
 

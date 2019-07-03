@@ -7,8 +7,8 @@ RSpec.describe 'SlackMsgr#chat :post_message' do
     mock_faraday_connection
   end
 
-  it 'sends a token, text and channel to https://slack.com/api/chat.postMessage' do
-    configure_slack_msgr(slack_msgr)
+  it 'sends a default token, text and channel to https://slack.com/api/chat.postMessage' do
+    configure_slack_msgr(slack_msgr, token: {bot: 'bot-token-beep-boop'})
 
     expect_any_instance_of(Faraday::Connection).to receive(:post)
 
