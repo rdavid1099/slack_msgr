@@ -18,8 +18,8 @@ RSpec.describe 'SlackMsgr#chat :post_message' do
   it 'throws error if oauth_access_token is not configured' do
     slack_msgr.configuration.clear!
 
-    error_msg = "Error with configruation: oauth_access_token not found\n" \
-      "Be sure to configure all tokens and secrets"
+    error_msg = "Error with configruation: access_tokens not found\n" \
+      "At least one oauth token must be configured using access_tokens"
 
     expect do
       slack_msgr.chat(:post_message, channel: 'announcements', text: 'Hello world')

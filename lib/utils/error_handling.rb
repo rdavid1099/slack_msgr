@@ -21,8 +21,8 @@ module SlackMsgr
       def configuration_error(_opts)
         {
           exception: ConfigurationError,
-          message: "Error with configruation: oauth_access_token not found\n" \
-            'Be sure to configure all tokens and secrets'
+          message: "Error with configruation: access_tokens not found\n" \
+            'At least one oauth token must be configured using access_tokens'
         }
       end
 
