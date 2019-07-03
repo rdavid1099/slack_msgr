@@ -1,10 +1,9 @@
-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require './lib/config/constants'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'slack-msgr'
+  spec.name          = 'slack_msgr'
   spec.version       = SlackMsgr::VERSION
   spec.authors       = ['Ryan Workman']
   spec.email         = ['rdavid1099@gmail.com']
@@ -16,7 +15,7 @@ Gem::Specification.new do |spec|
 
   if spec.respond_to?(:metadata)
     spec.metadata['homepage_uri'] = spec.homepage
-    spec.metadata['source_code_uri'] = 'https://github.com/rdavid1099/slack-msgr'
+    spec.metadata['source_code_uri'] = 'https://github.com/rdavid1099/slack_msgr'
   else
     raise 'RubyGems 2.0 or newer is required to protect against ' \
       'public gem pushes.'
