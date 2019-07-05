@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    slack_msgr (0.0.2)
+    slack_msgr (0.0.3)
       faraday (~> 0.15.4)
 
 GEM
