@@ -21,7 +21,7 @@ module SlackMsgr
       end
 
       def add_metadata_to_response(response)
-        response.body.merge!({auth_token: conceal(conn.headers['Authorization'])})
+        response.body.merge!(auth_token: conceal(conn.headers['Authorization']))
         response
       end
 
