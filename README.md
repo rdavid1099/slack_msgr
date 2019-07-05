@@ -33,13 +33,29 @@ If you are using this gem with a Rails project, create an initializer file.
 # ./config/initializers/slack_msgr.rb
 
 SlackMsgr.configure do |config|
-  config.verification_token          = '1a2b3c4d5e'
-  config.client_secret               = 'a1b2c3d4e5'
-  config.signing_secret              = 'aa11bb22cc3'
-  config.oauth_access_token          = 'xoxp-1234567-xxxxxxxxx'
-  config.bot_user_oauth_access_token = 'xoxb-1234567-xxxxxxxxx'
+  config.verification_token = '1a2b3c4d5e'
+  config.client_secret      = 'a1b2c3d4e5'
+  config.signing_secret     = 'aa11bb22cc3'
+  config.access_tokens      = {
+    bot: 'xoxp-1234567-xxxxxxxxx',
+    me: 'xoxb-1234567-xxxxxxxxx'
+  }
 end
 ```
+
+_NOTE_: All access tokens are configured as a hash. The name of the keys are arbitrary, and there is no limit to keys that can be configured.
+
+Multiple oauth tokens can be used during a single session. Oauth tokens are declared in the method execution. For example, considering the configuration above, to use the token attached to the key `:me` simply pass the parameter `use_token: :me`.
+
+```ruby
+SlackMsgr.chat(:post_message,
+  use_token: :me,
+  channel: 'announcements',
+  text: 'Hello world'
+)
+```
+
+SlackMsgr will try to use a default token if a method is called without declaring `use_token:`. SlackMsgr takes the first token in the `access_tokens` hash as a default.
 
 If you are using this gem outside of a Rails project, follow the configuration pattern above, but be sure to run this code before using any functionality of the gem.
 
@@ -59,6 +75,7 @@ SlackMsgr.chat(:post_message, channel: 'announcements', text: 'Hello world')
 # Sends the text 'Hello world' to the announcements channel
 
 SlackMsgr.chat(:post_message, {
+  use_token: :bot,
   channel: "C1H9RESGL",
   text: "Here's a message for you",
   as_user: false,
@@ -69,7 +86,7 @@ SlackMsgr.chat(:post_message, {
     fallback: "This is an attachment's fallback"
   }]
 })
-# Sends a message with an attachment as a user with the username 'testing'
+# Sends a message with an attachment using the oauth token configured for :bot as a user with the username 'testing'
 ```
 
 ## License
