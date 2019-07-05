@@ -21,8 +21,8 @@ module SlackMsgr
       end
 
       def add_metadata_to_response(response)
-        response.body.merge!(auth_token: conceal(conn.headers['Authorization']))
-        response
+        JSON.parse(response.body, symbolize_names: true)
+          .merge!(auth_token: conceal(conn.headers['Authorization']))
       end
 
       def send_post_request_to_slack(obj)

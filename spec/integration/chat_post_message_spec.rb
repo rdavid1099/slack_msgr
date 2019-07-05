@@ -44,7 +44,7 @@ RSpec.describe 'SlackMsgr#chat :post_message' do
       text: 'Hello world'
     )
 
-    expect(response.body[:auth_token]).to eq(expected_me_token)
+    expect(response[:auth_token]).to eq(expected_me_token)
 
     response = slack_msgr.chat(:post_message,
       use_token: :bot,
@@ -52,6 +52,6 @@ RSpec.describe 'SlackMsgr#chat :post_message' do
       text: 'Hello world'
     )
 
-    expect(response.body[:auth_token]).to eq(expected_bot_token)
+    expect(response[:auth_token]).to eq(expected_bot_token)
   end
 end

@@ -19,7 +19,7 @@ RSpec.describe SlackMsgr::Chat do
 
       resp = chat.call(method, opts)
 
-      expect(resp.status).to eq(200)
+      expect(resp[:ok]).to eq(true)
     end
 
     it 'raises error if invalid method is passed' do
