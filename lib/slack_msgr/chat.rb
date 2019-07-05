@@ -29,12 +29,7 @@ module SlackMsgr
     class << self
       def call(method, opts = {})
         chat = new(method, opts)
-
-        conn.post do |req|
-          req.url "/api/#{chat.method}"
-          req.headers['Content-Type'] = 'application/json; charset=utf-8'
-          req.body = chat.body
-        end
+        send_post_request_to_slack(chat)
       end
     end
 

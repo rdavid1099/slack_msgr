@@ -13,7 +13,7 @@ module SlackMsgrHelpers
 
   def mock_faraday_connection
     allow_any_instance_of(Faraday::Connection).to receive(:post).and_return(
-      double("response", status: 200, body: {"ok": true})
+      double("response", status: 200, body: {"ok" => true})
     )
   end
 

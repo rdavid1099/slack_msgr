@@ -41,5 +41,11 @@ module SlackMsgr
 
       access_tokens[set_default_token] || access_tokens.first[1]
     end
+
+    def oauth_access_token(given_token)
+      token = access_tokens[given_token] || default_token
+      ErrorHandling.raise(:configuration_error) unless token
+      token
+    end
   end
 end

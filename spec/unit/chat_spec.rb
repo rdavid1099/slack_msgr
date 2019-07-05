@@ -15,6 +15,7 @@ RSpec.describe SlackMsgr::Chat do
       opts = {channel: 'announcements', text: 'Hello world'}
 
       expect(chat).to receive(:new).with(method, opts)
+        .and_return(SlackMsgr::Chat.new(method, opts))
 
       resp = chat.call(method, opts)
 
