@@ -11,10 +11,15 @@ module SlackMsgr
 
     def configure
       yield(configuration)
+      nil
     end
 
     def chat(method, opts = {})
       Chat.call(method, opts)
+    end
+
+    def users(*methods, **opts)
+      Users.call(methods, opts)
     end
   end
 end

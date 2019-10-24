@@ -6,6 +6,7 @@ module SlackMsgr
     attr_accessor :verification_token,
                   :client_secret,
                   :signing_secret,
+                  :legacy_token,
                   :access_tokens,
                   :set_default_token
 
@@ -13,12 +14,14 @@ module SlackMsgr
       verification_token: nil,
       client_secret: nil,
       signing_secret: nil,
+      legacy_token: nil,
       access_tokens: {},
       set_default_token: nil
     )
       @verification_token = verification_token
       @client_secret      = client_secret
       @signing_secret     = signing_secret
+      @legacy_token       = legacy_token
       @access_tokens      = access_tokens
       @set_default_token  = set_default_token
     end
@@ -27,6 +30,7 @@ module SlackMsgr
       @verification_token = nil
       @client_secret      = nil
       @signing_secret     = nil
+      @legacy_token       = nil
       @access_tokens      = {}
       @set_default_token  = nil
       @default_token      = nil
