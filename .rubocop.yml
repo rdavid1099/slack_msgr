@@ -58,10 +58,10 @@ AllCops:
     - bin/**
 
 Metrics/LineLength:
-  Description: 'Limit lines to 100 characters.'
-  StyleGuide: '#100-character-limits'
+  Description: 'Limit lines to 120 characters.'
+  StyleGuide: '#120-character-limits'
   Enabled: true
-  Max: 100
+  Max: 120
   # To make it possible to copy or click on URIs in the code, we allow lines
   # containing a URI to be longer than Max.
   AllowHeredoc: true

@@ -10,7 +10,7 @@ module SlackMsgr
                   :access_tokens,
                   :set_default_token
 
-    def initialize(
+    def initialize( # rubocop:disable Metrics/ParameterLists
       verification_token: nil,
       client_secret: nil,
       signing_secret: nil,

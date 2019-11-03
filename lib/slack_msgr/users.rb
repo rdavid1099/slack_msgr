@@ -37,19 +37,18 @@ module SlackMsgr
         ErrorHandling.raise(:unknown_method, method: method) unless USERS_METHODS[method]
 
         USERS_METHODS[method]
-      end.join(".")
+      end.join('.')
 
       @method = "users.#{users_method}"
       @opts   = opts
       @body   = sanitize_body
-      puts body
     end
 
     private
 
     def sanitize_body
-      ErrorHandling.raise(:req_args_missing, req_args: REQUIRED_ARGUMENTS, method: method) if req_args_missing? # rubocop:disable LineLength
-      puts opts.merge(token)
+      ErrorHandling.raise(:req_args_missing, req_args: REQUIRED_ARGUMENTS, method: method) if req_args_missing?
+
       opts.merge!(token).keys.each_with_object({}) do |key, body|
         body[key] ||= opts[key] if PERMITTED_ARGUMENTS.include?(key)
         body
@@ -61,7 +60,7 @@ module SlackMsgr
     end
 
     def token
-      {token: SlackMsgr.configuration.legacy_token}
+      { token: SlackMsgr.configuration.legacy_token }
     end
   end
 end
