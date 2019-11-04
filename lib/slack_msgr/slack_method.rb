@@ -6,9 +6,7 @@ module SlackMsgr
     class << self
       private
 
-      attr_reader :conn
-
-      def establish_connection
+      def conn
         @conn ||= Faraday.new(url: SLACK_URL) do |config|
           config.request  :url_encoded             # form-encode POST params
           config.adapter  Faraday.default_adapter  # make requests with Net::HTTP
@@ -21,11 +19,10 @@ module SlackMsgr
 
       def add_metadata_to_response(response)
         JSON.parse(response.body, symbolize_names: true)
-          .merge!(auth_token: conceal(conn.headers['Authorization']))
+            .merge!(auth_token: conceal(conn.headers['Authorization']))
       end
 
-      def send_post_request_to_slack(obj, **request_opts)
-        establish_connection
+      def send_post_request_to_slack(obj)
         conn.authorization :Bearer, SlackMsgr.configuration.oauth_access_token(obj.opts[:use_token])
         response = conn.post do |req|
           req.url "/api/#{obj.method}"
@@ -36,7 +33,6 @@ module SlackMsgr
       end
 
       def send_legacy_request_to_slack(obj)
-        establish_connection
         conn.authorization :Bearer, SlackMsgr.configuration.legacy_token
         response = conn.post do |req|
           req.url "/api/#{obj.method}"
