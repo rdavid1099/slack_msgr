@@ -5,5 +5,5 @@ module SlackMsgr
 
   SLACK_URL = 'https://slack.com'
 
-  VERSION = '0.0.5'
+  VERSION = '0.0.6'
 end
