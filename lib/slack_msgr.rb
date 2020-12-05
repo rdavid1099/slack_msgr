@@ -21,5 +21,9 @@ module SlackMsgr
     def users(*methods, **opts)
       Users.call(methods, opts)
     end
+
+    def conversations(method, **opts)
+      Conversations.call(method, opts)
+    end
   end
 end
